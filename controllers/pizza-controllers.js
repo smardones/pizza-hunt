@@ -1,5 +1,4 @@
-const { Pizza } = require('../models');
-const { db } = require('../models/Pizza');
+const Pizza = require('../models/Pizza');
 
 const pizzaController = {
     // get all pizzas
@@ -47,7 +46,7 @@ const pizzaController = {
     },
 
     // delete pizza
-    deletPizza({ params }, res) {
+    deletePizza({ params }, res) {
         Pizza.findOneAndDelete({_id: params.id})
             .then(dbPizzaData => {
                 if (!dbPizzaData) {
@@ -56,7 +55,7 @@ const pizzaController = {
                 }
                 res.json(dbPizzaData);
             })
-            .catch(err => res.status(400).json(err);
+            .catch(err => res.status(400).json(err));
     }
 };
 
