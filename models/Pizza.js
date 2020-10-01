@@ -4,10 +4,14 @@ const { Schema, model } = require('mongoose');
 
 const PizzaSchema = new Schema({
     pizzaName: {
-        type: String
+        type: String,
+        required: true,
+        trim: true
     },
     createdBy: {
-        type: String
+        type: String,
+        required: true,
+        trim: true
     },
     createdAt: {
         type: Date,
@@ -16,6 +20,8 @@ const PizzaSchema = new Schema({
     },
     size: {
         type: String,
+        require: true,
+        enum: ['Personal', 'Small', 'Medium', 'Large', 'Extra Large'],
         default: 'Large'
     },
     toppings: [],
